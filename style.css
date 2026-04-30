@@ -343,7 +343,17 @@ body {
     color: var(--dark-text-primary);
 }
 
+/* تنسيق الاسم في الوضع النهاري (تدرج ذهبي يبرز على الأزرق) */
 .highlight {
+    background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* تنسيق الاسم في الوضع المظلم (الاحتفاظ بالتدرج البنفسجي لأنه واضح هنا) */
+[data-theme="dark"] .highlight {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
