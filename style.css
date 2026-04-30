@@ -2077,3 +2077,29 @@ body {
 html {
     scroll-behavior: smooth;
 }
+/* تحسينات للغة العربية (RTL) */
+[dir="rtl"] body {
+    text-align: right;
+    font-family: 'Thmanyah', var(--font-primary); /* إعطاء الأولوية لخط ثمانية في العربي */
+}
+
+[dir="rtl"] .nav-menu {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+[dir="rtl"] .hero-buttons, 
+[dir="rtl"] .cv-buttons {
+    flex-direction: row-reverse;
+}
+
+/* قلب اتجاه الأيقونات في العربي إذا لزم الأمر */
+[dir="rtl"] .fa-arrow-right {
+    transform: rotate(180deg);
+}
+
+/* تعديل موقع القائمة المنسدلة في العربي */
+[dir="rtl"] .dropdown-content {
+    right: auto;
+    left: 0;
+}
