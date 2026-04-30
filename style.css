@@ -1,6 +1,19 @@
 /* ========================================
    GLOBAL STYLES & RESET
 ======================================== */
+@font-face {
+    font-family: 'Thmanyah';
+    src: url('fonts/thmanyahsans-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Thmanyah';
+    src: url('fonts/thmanyahsans-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
 * {
     margin: 0;
     padding: 0;
