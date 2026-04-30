@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     applyLanguage(currentLanguage);
     initHamburgerMenu();
-    initFormHandler();
+   // initFormHandler();
     setActiveNav();
     showScrollToTop();
 });
@@ -146,37 +146,7 @@ function initHamburgerMenu() {
 // FORM HANDLER
 // ========================================
 
-function initFormHandler() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (!name || !email || !subject || !message) {
-            showNotification('Please fill all fields', 'error');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email', 'error');
-            return;
-        }
-
-        const mailtoLink = `mailto:gorashe.suliman@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-        
-        window.location.href = mailtoLink;
-
-        form.reset();
-        
-        showNotification('Email client opened! Please send the email.', 'success');
-    });
-}
 
 function isValidEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
