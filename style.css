@@ -213,18 +213,31 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+/* استبدل من السطر 216 إلى 261 بهذا الكود */
 .dropdown-content {
     display: none;
     position: absolute;
     right: 0;
     top: 100%;
-    margin-top: 8px;
+    margin-top: 0; /* حذفنا الـ 8px لمنع اختفاء القائمة عند حركة الماوس */
     background-color: var(--bg-white);
     min-width: 140px;
     box-shadow: var(--shadow-lg);
     border-radius: var(--radius-md);
     overflow: hidden;
     border: 1px solid var(--border-color);
+    z-index: 2500; /* رفعنا الرقم ليكون فوق كل شيء */
+}
+
+/* إضافة جسر شفاف لمنع اختفاء القائمة (احتياط إضافي) */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
 }
 
 [data-theme="dark"] .dropdown-content {
@@ -1864,55 +1877,30 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .theme-switcher {
-        top: 70px;
-        left: 10px;
-    }
-
-    .language-switcher {
-        top: 70px;
-        right: 10px;
-    }
-
-    /* استبدال السطور من 1878 إلى 1901 بهذا الكود */
 .nav-menu {
     position: fixed;
-    inset-inline-start: -100%; /* يدعم اليمين واليسار تلقائياً */
-    top: 70px;
+    inset-inline-start: -100%; 
+    top: 0; /* جعلناه يبدأ من أعلى الشاشة تماماً */
+    height: 100vh; /* يغطي الشاشة بالكامل */
     flex-direction: column;
+    justify-content: center;
     background: var(--bg-white);
     width: 100%;
     text-align: center;
     transition: 0.3s ease-in-out;
-    box-shadow: var(--shadow-lg);
-    padding: var(--spacing-lg) 0;
-    z-index: 1100; 
-}
-
-[data-theme="dark"] .nav-menu {
-    background: var(--dark-bg-secondary);
-}
-
-.nav-menu.active {
-    inset-inline-start: 0;
+    z-index: 3000 !important; /* أعلى عنصر في الصفحة */
 }
 
 .hamburger {
     display: flex;
-    z-index: 1200;
+    z-index: 3100 !important; /* يجب أن يكون زر الضغط أعلى من المنيو نفسه */
+    position: relative;
 }
 
 /* حركة تحويل الزر لعلامة X */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
     .hero-title {
         font-size: 2.5rem;
