@@ -130,23 +130,19 @@ function initHamburgerMenu() {
 
     if (!hamburger || !navMenu) return;
 
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // منع الضغطة من الوصول للأزرار التي خلف المنيو
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
 
+    // إغلاق المنيو عند الضغط على أي رابط
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
         });
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.navbar')) {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
     });
 }
 
