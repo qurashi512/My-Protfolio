@@ -17,9 +17,15 @@
 
     <!-- Language Switcher -->
     <div class="language-switcher">
-        <button onclick="switchLanguage('en')" class="lang-btn active" id="lang-en">EN</button>
-        <button onclick="switchLanguage('de')" class="lang-btn" id="lang-de">DE</button>
+    <div class="lang-dropdown">
+        <button class="dropbtn">🌐 <span id="current-lang">English</span></button>
+        <div class="dropdown-content">
+            <a href="#" onclick="setLanguage('en'); return false;">🇬🇧 English</a>
+            <a href="#" onclick="setLanguage('de'); return false;">🇩🇪 Deutsch</a>
+            <a href="#" onclick="setLanguage('ar'); return false;">🇸🇦 العربية</a>
+        </div>
     </div>
+</div>
 
     <!-- Navigation -->
     <nav class="navbar">
