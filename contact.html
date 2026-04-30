@@ -9,14 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <div class="theme-switcher">
-        <button class="theme-toggle" title="Toggle Dark Mode (Alt+T)"></button>
-        <span class="theme-label">☀️ Light</span>
-    </div>
-
-    <!-- Language Switcher -->
-    <div class="language-switcher">
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="nav-controls">
     <div class="lang-dropdown">
         <button class="dropbtn">🌐 <span id="current-lang">English</span></button>
         <div class="dropdown-content">
@@ -25,12 +23,10 @@
             <a href="#" onclick="setLanguage('ar'); return false;">🇸🇦 العربية</a>
         </div>
     </div>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
+        <span class="theme-icon">☀️</span>
+    </button>
 </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
                 <h2>Gorashe Suliman</h2>
             </div>
             <ul class="nav-menu">
