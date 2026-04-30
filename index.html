@@ -16,17 +16,16 @@
     </div>
 
     <!-- Language Switcher -->
-    <div class="language-switcher lang-dropdown">
-        <button class="dropbtn">
-            <span id="current-flag">🇬🇧</span> <span id="current-lang-name">EN</span> 
-            <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i>
-        </button>
+    <div class="language-switcher">
+    <div class="lang-dropdown">
+        <button class="dropbtn">🌐 <span id="current-lang">English</span></button>
         <div class="dropdown-content">
-            <a href="#" onclick="switchLanguage('en'); return false;" id="lang-en" class="active">🇬🇧 English</a>
-            <a href="#" onclick="switchLanguage('de'); return false;" id="lang-de">🇩🇪 Deutsch</a>
-            <a href="#" onclick="switchLanguage('ar'); return false;" id="lang-ar">🇸🇦 العربية</a>
+            <a href="#" onclick="setLanguage('en'); return false;">🇬🇧 English</a>
+            <a href="#" onclick="setLanguage('de'); return false;">🇩🇪 Deutsch</a>
+            <a href="#" onclick="setLanguage('ar'); return false;">🇸🇦 العربية</a>
         </div>
     </div>
+</div>
 
     <!-- Navigation -->
     <nav class="navbar">
