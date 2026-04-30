@@ -1875,30 +1875,44 @@ body {
         right: 10px;
     }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: var(--bg-white);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: var(--shadow-lg);
-        padding: var(--spacing-lg) 0;
-    }
+    /* استبدال السطور من 1878 إلى 1901 بهذا الكود */
+.nav-menu {
+    position: fixed;
+    inset-inline-start: -100%; /* يدعم اليمين واليسار تلقائياً */
+    top: 70px;
+    flex-direction: column;
+    background: var(--bg-white);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg) 0;
+    z-index: 1100; 
+}
 
-    [data-theme="dark"] .nav-menu {
-        background: var(--dark-bg-secondary);
-    }
+[data-theme="dark"] .nav-menu {
+    background: var(--dark-bg-secondary);
+}
 
-    .nav-menu.active {
-        left: 0;
-    }
+.nav-menu.active {
+    inset-inline-start: 0;
+}
 
-    .hamburger {
-        display: flex;
-    }
+.hamburger {
+    display: flex;
+    z-index: 1200;
+}
+
+/* حركة تحويل الزر لعلامة X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
 
     .hero-title {
         font-size: 2.5rem;
