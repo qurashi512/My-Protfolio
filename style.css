@@ -101,116 +101,41 @@ body {
     padding: 0 var(--spacing-md);
 }
 
-/* ========================================
-   DARK MODE TOGGLE BUTTON
-======================================== */
-.theme-switcher {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+/* التنسيق الجديد لأدوات التحكم داخل الناف بار */
+.nav-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: var(--bg-white);
-    padding: 10px 15px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    border: 2px solid var(--border-color);
-    transition: all var(--transition-base);
+    gap: 15px;
+    margin-left: auto; /* يدفع الأزرار لليمين بجانب المنيو */
+    margin-right: 20px;
 }
 
-.theme-switcher:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-2px);
+/* لضمان الترتيب الصحيح في وضع RTL (العربية) */
+[dir="rtl"] .nav-controls {
+    margin-left: 20px;
+    margin-right: auto;
 }
 
-.theme-toggle {
-    width: 50px;
-    height: 28px;
-    background: var(--border-color);
-    border: none;
-    border-radius: 20px;
+/* تنسيق زر الثيم الجديد ليصبح أنيقاً داخل الشريط */
+.theme-toggle-btn {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     cursor: pointer;
-    position: relative;
-    transition: all var(--transition-base);
-    display: flex;
-    align-items: center;
-}
-
-.theme-toggle:hover {
-    background: var(--primary-color);
-}
-
-.theme-toggle::before {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: white;
-    left: 2px;
-    transition: left var(--transition-base);
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-[data-theme="dark"] .theme-toggle::before {
-    left: 24px;
-}
-
-.theme-label {
-    font-size: 0.85rem;
-    font-weight: 600;
+    transition: 0.3s;
     color: var(--text-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-/* ========================================
-   LANGUAGE SWITCHER
-======================================== */
-/* ========================================
-   LANGUAGE SWITCHER (Dropdown)
-======================================== */
-.language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.lang-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background-color: var(--bg-white);
-    color: var(--text-dark);
-    border: 2px solid var(--border-color);
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-primary);
-}
-
-[data-theme="dark"] .dropbtn {
-    background-color: var(--dark-bg-secondary);
-    color: var(--dark-text-primary);
+[data-theme="dark"] .theme-toggle-btn {
+    background: var(--dark-bg-tertiary);
     border-color: var(--dark-border-color);
-}
-
-.dropbtn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    color: var(--dark-text-primary);
 }
 
 /* استبدل من السطر 216 إلى 261 بهذا الكود */
