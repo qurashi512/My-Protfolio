@@ -284,7 +284,31 @@ function showScrollToTop() {
         }
     });
 }
+// ========================================
+// THEME & LANGUAGE CONTROLS
+// ========================================
+function toggleTheme() {
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(newTheme);
+    
+    // تحديث الأيقونة داخل الزر الجديد
+    const icon = document.querySelector('.theme-icon');
+    if (icon) {
+        icon.textContent = newTheme === 'light' ? '☀️' : '🌙';
+    }
+}
 
+function setLanguage(lang) {
+    // استدعاء دالة تطبيق اللغة الموجودة مسبقاً في ملفك
+    applyLanguage(lang);
+    
+    // تحديث النص في القائمة المنسدلة
+    const currentLangText = document.getElementById('current-lang');
+    if (currentLangText) {
+        const names = { 'en': 'English', 'de': 'Deutsch', 'ar': 'العربية' };
+        currentLangText.textContent = names[lang];
+    }
+}
 // ========================================
 // CONSOLE MESSAGE
 // ========================================
