@@ -8,24 +8,24 @@
 }
 
 :root {
-    /* Light Mode Colors (Default) */
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
+    /* Light Mode Colors (Default) - Updated */
+    --primary-color: #0D6EFD;
+    --primary-dark: #0B5ED7;
     --secondary-color: #10b981;
     --accent-color: #f59e0b;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
-    --bg-light: #f9fafb;
-    --bg-white: #ffffff;
-    --border-color: #e5e7eb;
+    --text-dark: #212529;
+    --text-light: #6C757D;
+    --bg-light: #F8F9FA;
+    --bg-white: #FFFFFF;
+    --border-color: #DEE2E6;
     
-    /* Dark Mode Colors */
-    --dark-bg-primary: #0f172a;
-    --dark-bg-secondary: #1e293b;
-    --dark-bg-tertiary: #334155;
-    --dark-text-primary: #f1f5f9;
-    --dark-text-secondary: #cbd5e1;
-    --dark-border-color: #475569;
+    /* Dark Mode Colors - Updated */
+    --dark-bg-primary: #121212;
+    --dark-bg-secondary: #1E1E1E;
+    --dark-bg-tertiary: #2A2A2A;
+    --dark-text-primary: #E0E0E0;
+    --dark-text-secondary: #A0A0A0;
+    --dark-border-color: #333333;
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -60,14 +60,15 @@
     --transition-slow: 0.5s ease;
 }
 
-/* Dark Mode Variables */
+/* Dark Mode Variables - Updated */
 [data-theme="dark"] {
-    --text-dark: #f1f5f9;
-    --text-light: #cbd5e1;
-    --bg-light: #1e293b;
-    --bg-white: #0f172a;
-    --border-color: #475569;
-    --primary-color: #3b82f6;
+    --text-dark: #E0E0E0;
+    --text-light: #A0A0A0;
+    --bg-light: #121212;
+    --bg-white: #1E1E1E;
+    --border-color: #333333;
+    --primary-color: #3B82F6;
+    --primary-dark: #60A5FA;
     --secondary-color: #10b981;
     --accent-color: #f59e0b;
 }
@@ -281,7 +282,7 @@ body {
 }
 
 [data-theme="dark"] .hero {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
     border-bottom: 2px solid var(--border-color);
 }
 
@@ -447,7 +448,7 @@ body {
 }
 
 [data-theme="dark"] .btn-primary:hover {
-    background: #60a5fa;
+    background: var(--primary-dark);
 }
 
 .btn-secondary {
@@ -457,8 +458,8 @@ body {
 }
 
 [data-theme="dark"] .btn-secondary {
-    color: #60a5fa;
-    border-color: #60a5fa;
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
 }
 
 .btn-secondary:hover {
@@ -467,7 +468,7 @@ body {
 }
 
 [data-theme="dark"] .btn-secondary:hover {
-    background: #60a5fa;
+    background: var(--primary-dark);
     color: white;
 }
 
@@ -672,7 +673,7 @@ body {
 [data-theme="dark"] .about-hero,
 [data-theme="dark"] .projects-hero,
 [data-theme="dark"] .contact-hero {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
     border-bottom: 2px solid var(--border-color);
 }
 
@@ -716,7 +717,7 @@ body {
 }
 
 [data-theme="dark"] .about-profile-photo {
-    border: 5px solid #60a5fa;
+    border: 5px solid var(--primary-dark);
     box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.5),
         0 0 0 15px rgba(96, 165, 250, 0.1);
@@ -855,7 +856,7 @@ body {
 
 [data-theme="dark"] .timeline-content {
     background: var(--dark-bg-tertiary);
-    border-left-color: #60a5fa;
+    border-left-color: var(--primary-dark);
 }
 
 .timeline-content h3 {
@@ -1299,7 +1300,7 @@ body {
 
 [data-theme="dark"] .coming-soon-card {
     background: linear-gradient(135deg, var(--dark-bg-secondary) 0%, var(--dark-bg-tertiary) 100%);
-    border-color: #60a5fa;
+    border-color: var(--primary-dark);
 }
 
 .coming-soon-card i {
@@ -1310,7 +1311,7 @@ body {
 }
 
 [data-theme="dark"] .coming-soon-card i {
-    color: #60a5fa;
+    color: var(--primary-dark);
 }
 
 @keyframes float {
@@ -1342,7 +1343,7 @@ body {
 }
 
 [data-theme="dark"] .coming-soon-subtitle {
-    color: #60a5fa;
+    color: var(--primary-dark);
 }
 
 .upcoming-projects {
@@ -1651,7 +1652,7 @@ body {
 }
 
 [data-theme="dark"] .cta-section {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #1E1E1E 0%, #121212 100%);
     border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color);
 }
@@ -1718,7 +1719,7 @@ body {
 }
 
 [data-theme="dark"] .footer {
-    background: #0f172a;
+    background: #121212;
     border-top: 1px solid var(--border-color);
 }
 
