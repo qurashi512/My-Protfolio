@@ -83,33 +83,41 @@ const languages = {
     }
 };
 
-let currentLanguage = localStorage.getItem('language') || 'en';
+// ========================================
+// نظام تبديل اللغات ودعم الاتجاه (RTL)
+// ========================================
 
-function switchLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('language', lang);
-    applyLanguage(lang);
-    
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    const langBtn = document.getElementById(`lang-${lang}`);
-    if (langBtn) {
-        langBtn.classList.add('active');
-    }
-}
-
-function applyLanguage(lang) {
-    document.querySelectorAll('[data-en]').forEach(element => {
+function setLanguage(lang) {
+    // 1. تحديث النصوص بناءً على الواصفات data-en, data-de, data-ar
+    document.querySelectorAll('[data-en], [data-de], [data-ar]').forEach(element => {
         if (element.hasAttribute(`data-${lang}`)) {
-            element.textContent = element.getAttribute(`data-${lang}`);
-        } else {
-            element.textContent = element.getAttribute('data-en');
+            element.innerHTML = element.getAttribute(`data-${lang}`);
         }
     });
+
+    // 2. تفعيل الاتجاه من اليمين لليسار (RTL) عند اختيار العربية
+    if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+    }
     
     document.documentElement.lang = lang;
+
+    // 3. تحديث النص الظاهر في زر القائمة المنسدلة (🌐 Current Language)
+    const currentLangText = document.getElementById('current-lang');
+    if (currentLangText) {
+        const langMap = { 'en': 'English', 'de': 'Deutsch', 'ar': 'العربية' };
+        currentLangText.textContent = langMap[lang];
+    }
+
+    // 4. حفظ الاختيار في المتصفح
+    localStorage.setItem('language', lang);
+}
+
+// وظيفة وسيطة لضمان عمل الكود القديم الذي يستدعي applyLanguage
+function applyLanguage(lang) {
+    setLanguage(lang);
 }
 
 // ========================================
