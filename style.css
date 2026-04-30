@@ -18,7 +18,7 @@
     --bg-light: #f9fafb;
     --bg-white: #ffffff;
     --border-color: #e5e7eb;
-
+    
     /* Dark Mode Colors */
     --dark-bg-primary: #0f172a;
     --dark-bg-secondary: #1e293b;
@@ -26,34 +26,34 @@
     --dark-text-primary: #f1f5f9;
     --dark-text-secondary: #cbd5e1;
     --dark-border-color: #475569;
-
+    
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-
+    
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-
+    
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-heading: 'Poppins', sans-serif;
-
+    
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-
+    
     /* Border Radius */
     --radius-sm: 0.375rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
-
+    
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
@@ -146,32 +146,6 @@ body {
     left: 24px;
 }
 
-.theme-icon {
-    font-size: 1.2rem;
-    color: var(--text-dark);
-    transition: all var(--transition-base);
-}
-
-.theme-icon.sun {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
-.theme-icon.moon {
-    opacity: 0;
-    transform: rotate(-180deg);
-}
-
-[data-theme="dark"] .theme-icon.sun {
-    opacity: 0;
-    transform: rotate(180deg);
-}
-
-[data-theme="dark"] .theme-icon.moon {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
 .theme-label {
     font-size: 0.85rem;
     font-weight: 600;
@@ -181,7 +155,7 @@ body {
 }
 
 /* ========================================
-   LANGUAGE SWITCHER (Updated Position)
+   LANGUAGE SWITCHER
 ======================================== */
 .language-switcher {
     position: fixed;
@@ -220,7 +194,7 @@ body {
 }
 
 /* ========================================
-   NAVIGATION (Dark Mode Update)
+   NAVIGATION
 ======================================== */
 .navbar {
     background: var(--bg-white);
@@ -296,7 +270,7 @@ body {
 }
 
 /* ========================================
-   HERO SECTION (Dark Mode Update)
+   HERO SECTION
 ======================================== */
 .hero {
     padding: 100px 0;
@@ -322,7 +296,6 @@ body {
     color: var(--dark-text-primary);
 }
 
-/* Profile Photo Styles */
 .hero-profile {
     margin-bottom: var(--spacing-xl);
 }
@@ -400,7 +373,6 @@ body {
     color: var(--dark-text-secondary);
 }
 
-/* Social Links */
 .social-links {
     display: flex;
     justify-content: center;
@@ -438,7 +410,6 @@ body {
 .social-links a:nth-child(4):hover { color: #E4405F; }
 .social-links a:nth-child(5):hover { color: #25D366; }
 
-/* Hero Buttons */
 .hero-buttons {
     display: flex;
     gap: var(--spacing-md);
@@ -501,7 +472,7 @@ body {
 }
 
 /* ========================================
-   SKILLS SECTION (Dark Mode Update)
+   SKILLS SECTION
 ======================================== */
 .skills-section {
     padding: 80px 0;
@@ -582,7 +553,7 @@ body {
 }
 
 /* ========================================
-   CERTIFICATIONS SECTION (Dark Mode Update)
+   CERTIFICATIONS SECTION
 ======================================== */
 .certifications-section {
     padding: 80px 0;
@@ -686,7 +657,7 @@ body {
 }
 
 /* ========================================
-   ABOUT PAGE STYLES (Dark Mode)
+   ABOUT PAGE STYLES
 ======================================== */
 .about-hero,
 .projects-hero,
@@ -738,7 +709,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--primary-color);
-    box-shadow:
+    box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.2),
         0 0 0 15px rgba(38, 99, 235, 0.1);
     transition: all var(--transition-base);
@@ -746,14 +717,14 @@ body {
 
 [data-theme="dark"] .about-profile-photo {
     border: 5px solid #60a5fa;
-    box-shadow:
+    box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.5),
         0 0 0 15px rgba(96, 165, 250, 0.1);
 }
 
 .about-profile-photo:hover {
     transform: scale(1.05);
-    box-shadow:
+    box-shadow: 
         0 15px 50px rgba(0, 0, 0, 0.3),
         0 0 0 20px rgba(38, 99, 235, 0.15);
 }
@@ -816,7 +787,7 @@ body {
 }
 
 /* ========================================
-   TIMELINE (Dark Mode)
+   TIMELINE
 ======================================== */
 .experience-section {
     padding: 80px 0;
@@ -909,7 +880,7 @@ body {
 }
 
 /* ========================================
-   SOFT SKILLS (Dark Mode)
+   SOFT SKILLS
 ======================================== */
 .soft-skills-section {
     padding: 80px 0;
@@ -959,7 +930,7 @@ body {
 }
 
 /* ========================================
-   PROJECT MOCKUPS (Dark Mode)
+   PROJECT MOCKUPS
 ======================================== */
 
 .project-mockups {
@@ -987,7 +958,6 @@ body {
     align-items: center;
 }
 
-/* Desktop Mockup */
 .desktop-mockup .mockup-container {
     width: 100%;
 }
@@ -998,7 +968,7 @@ body {
     background: linear-gradient(145deg, #2d3748, #1a202c);
     border-radius: 12px;
     padding: 20px 20px 60px 20px;
-    box-shadow:
+    box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.3),
         inset 0 0 20px rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
@@ -1010,7 +980,7 @@ body {
 
 .mockup-frame:hover {
     transform: translateY(-10px);
-    box-shadow:
+    box-shadow: 
         0 30px 100px rgba(0, 0, 0, 0.4),
         inset 0 0 20px rgba(255, 255, 255, 0.08);
 }
@@ -1046,7 +1016,6 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile Mockup */
 .mobile-mockup {
     display: flex;
     justify-content: center;
@@ -1063,7 +1032,7 @@ body {
     background: #1a202c;
     border-radius: 40px;
     padding: 15px;
-    box-shadow:
+    box-shadow: 
         0 30px 80px rgba(0, 0, 0, 0.4),
         inset 0 0 20px rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
@@ -1075,7 +1044,7 @@ body {
 
 .mockup-phone:hover {
     transform: rotateY(5deg) translateY(-10px);
-    box-shadow:
+    box-shadow: 
         0 40px 120px rgba(0, 0, 0, 0.5),
         inset 0 0 20px rgba(255, 255, 255, 0.08);
 }
@@ -1119,7 +1088,7 @@ body {
 }
 
 /* ========================================
-   PROJECT DETAILS (Dark Mode)
+   PROJECT DETAILS
 ======================================== */
 .project-detailed {
     background: var(--bg-white);
@@ -1181,7 +1150,6 @@ body {
     color: var(--text-light);
 }
 
-/* Project Features */
 .project-features {
     margin: var(--spacing-xl) 0;
 }
@@ -1219,7 +1187,6 @@ body {
     margin-top: 2px;
 }
 
-/* Technologies */
 .project-tech {
     margin: var(--spacing-xl) 0;
 }
@@ -1265,7 +1232,6 @@ body {
     font-size: 1.25rem;
 }
 
-/* Project Stats */
 .project-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -1311,7 +1277,6 @@ body {
     font-weight: 600;
 }
 
-/* Project Links */
 .project-links {
     display: flex;
     gap: var(--spacing-md);
@@ -1319,7 +1284,6 @@ body {
     margin-top: var(--spacing-xl);
 }
 
-/* Coming Soon */
 .future-projects {
     margin-top: var(--spacing-xl) * 2;
 }
@@ -1418,7 +1382,7 @@ body {
 }
 
 /* ========================================
-   CONTACT PAGE (Dark Mode)
+   CONTACT PAGE
 ======================================== */
 .contact-section {
     padding: 80px 0;
@@ -1500,7 +1464,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Social Connect */
 .social-connect {
     margin-top: var(--spacing-xl);
 }
@@ -1575,7 +1538,6 @@ body {
     font-size: 0.875rem;
 }
 
-/* Contact Form */
 .contact-form-container {
     background: var(--bg-light);
     padding: var(--spacing-xl);
@@ -1678,7 +1640,7 @@ body {
 }
 
 /* ========================================
-   CTA SECTION (Dark Mode)
+   CTA SECTION
 ======================================== */
 .cta-section {
     background: var(--gradient-primary);
@@ -1745,7 +1707,7 @@ body {
 }
 
 /* ========================================
-   FOOTER (Dark Mode)
+   FOOTER
 ======================================== */
 .footer {
     background: var(--text-dark);
@@ -1997,6 +1959,32 @@ body {
 .hero-description { animation-delay: 0.4s; }
 .social-links { animation-delay: 0.5s; }
 .hero-buttons { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+.notification {
+    font-weight: 500;
+}
 
 /* Smooth Scroll */
 html {
