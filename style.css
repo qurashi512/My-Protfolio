@@ -481,6 +481,16 @@ body {
     background: var(--primary-dark);
     color: white;
 }
+/* إصلاح لون الزر الثاني في الخلفية الزرقاء */
+.hero-buttons .btn-secondary {
+    color: white;
+    border-color: white;
+}
+
+.hero-buttons .btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+}
 
 /* ========================================
    SKILLS SECTION
