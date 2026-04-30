@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects by Gorashe Suliman">
+    <title>Projects - Gorashe Suliman</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button onclick="switchLanguage('en')" class="lang-btn active" id="lang-en">EN</button>
+        <button onclick="switchLanguage('de')" class="lang-btn" id="lang-de">DE</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>Gorashe Suliman</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-en="Home" data-de="Startseite">Home</a></li>
+                <li><a href="about.html" data-en="About" data-de="Über mich">About</a></li>
+                <li><a href="projects.html" class="active" data-en="Projects" data-de="Projekte">Projects</a></li>
+                <li><a href="contact.html" data-en="Contact" data-de="Kontakt">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1 data-en="My Projects" data-de="Meine Projekte">My Projects</h1>
+            <p class="subtitle" data-en="Building solutions with code" data-de="Lösungen mit Code entwickeln">Building solutions with code</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+
+            <!-- Expense Tracker Project -->
+            <div class="project-detailed">
+                <div class="project-header">
+                    <h2>Expense Tracker</h2>
+                    <div class="project-meta">
+                        <span class="project-date">Apr 2026</span>
+                        <span class="project-type" data-en="Full-Stack Web Application" data-de="Full-Stack-Webanwendung">Full-Stack Web Application</span>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <p data-en="A comprehensive web application designed to help users manage and visualize their personal finances. Built as my final project for CS50x, this application features expense tracking, budget management, and financial data visualization." data-de="Eine umfassende Webanwendung zur Verwaltung und Visualisierung persönlicher Finanzen. Als Abschlussprojekt für CS50x entwickelt, bietet diese Anwendung Ausgabenverfolgung, Budgetverwaltung und Finanzdatenvisualisierung.">
+                        A comprehensive web application designed to help users manage and visualize their personal finances. Built as my final project for CS50x, this application features expense tracking, budget management, and financial data visualization.
+                    </p>
+                </div>
+
+                <!-- Mockup Section - صورتان (Desktop + Mobile) -->
+                <div class="project-mockups">
+                    <h3 data-en="Application Preview" data-de="Anwendungsvorschau">Application Preview</h3>
+
+                    <div class="mockups-grid">
+                        <!-- Desktop Mockup -->
+                        <div class="mockup-wrapper">
+                            <div class="mockup-container desktop-mockup">
+                                <div class="mockup-frame">
+                                    <div class="mockup-screen">
+                                        <img src="images/expense-tracker-desktop.png"
+                                             alt="Expense Tracker - Desktop View"
+                                             loading="lazy">
+                                    </div>
+                                    <div class="mockup-base"></div>
+                                </div>
+                            </div>
+                            <p class="mockup-label" data-en="Desktop Experience" data-de="Desktop-Erfahrung">
+                                💻 Desktop Experience
+                            </p>
+                        </div>
+
+                        <!-- Mobile Mockup -->
+                        <div class="mockup-wrapper">
+                            <div class="mockup-container mobile-mockup">
+                                <div class="mockup-phone">
+                                    <div class="mockup-notch"></div>
+                                    <div class="mockup-screen-mobile">
+                                        <img src="images/expense-tracker-mobile.png"
+                                             alt="Expense Tracker - Mobile View"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mockup-label" data-en="Mobile Design" data-de="Mobile-Design">
+                                📱 Mobile Design
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="project-features">
+                    <h3 data-en="Key Features" data-de="Hauptfunktionen">Key Features</h3>
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="User authentication and session management" data-de="Benutzerauthentifizierung und Sitzungsverwaltung">User authentication and session management</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Add, edit, and delete expense entries" data-de="Ausgaben hinzufügen, bearbeiten und löschen">Add, edit, and delete expense entries</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Category-based expense organization" data-de="Kategoriebasierte Ausgabenorganisation">Category-based expense organization</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Interactive charts and financial summaries" data-de="Interaktive Diagramme und Finanzzusammenfassungen">Interactive charts and financial summaries</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Budget tracking and alerts" data-de="Budgetverfolgung und Benachrichtigungen">Budget tracking and alerts</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Responsive design for all devices" data-de="Responsives Design für alle Geräte">Responsive design for all devices</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Export reports to CSV format" data-de="Berichte im CSV-Format exportieren">Export reports to CSV format</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span data-en="Monthly and yearly analytics" data-de="Monatliche und jährliche Analysen">Monthly and yearly analytics</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Technologies -->
+                <div class="project-tech">
+                    <h3 data-en="Technologies Used" data-de="Verwendete Technologien">Technologies Used</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </span>
+                        <span class="tech-tag">
+                            <i class="fas fa-flask"></i>
+                            <span>Flask</span>
+                        </span>
+                        <span class="tech-tag">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </span>
+                        <span class="tech-tag">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </span>
+                        <span class="tech-tag">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </span>
+                        <span class="tech-tag">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Project Stats -->
+                <div class="project-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label" data-en="Core Features" data-de="Kernfunktionen">Core Features</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label" data-en="Tech Stack" data-de="Technologie-Stack">Tech Stack</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label" data-en="Responsive" data-de="Responsiv">Responsive</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">CS50</div>
+                        <div class="stat-label" data-en="Final Project" data-de="Abschlussprojekt">Final Project</div>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="project-links">
+                    <a href="https://github.com/qurashi512/Expense-Tracker" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        <span data-en="View on GitHub" data-de="Auf GitHub ansehen">View on GitHub</span>
+                    </a>
+                    <a href="https://github.com/qurashi512/Expense-Tracker/blob/main/README.md" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-book"></i>
+                        <span data-en="Read Documentation" data-de="Dokumentation lesen">Read Documentation</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- More Projects Coming -->
+            <div class="future-projects">
+                <div class="coming-soon-card">
+                    <i class="fas fa-rocket"></i>
+                    <h2 data-en="More Projects Coming Soon..." data-de="Mehr Projekte kommen bald...">More Projects Coming Soon...</h2>
+                    <p data-en="I'm constantly working on new projects and expanding my portfolio. Check back soon for updates!" data-de="Ich arbeite ständig an neuen Projekten und erweitere mein Portfolio. Schauen Sie bald vorbei!">
+                        I'm constantly working on new projects and expanding my portfolio. Check back soon for updates!
+                    </p>
+                    <p class="coming-soon-subtitle" data-en="Currently in development:" data-de="Derzeit in Entwicklung:">
+                        Currently in development:
+                    </p>
+                    <ul class="upcoming-projects">
+                        <li><i class="fas fa-code"></i> <span data-en="Task Management Application" data-de="Aufgabenverwaltungsanwendung">Task Management Application</span></li>
+                        <li><i class="fas fa-code"></i> <span data-en="Weather Forecast App" data-de="Wetter-Prognose-App">Weather Forecast App</span></li>
+                        <li><i class="fas fa-code"></i> <span data-en="E-commerce Platform" data-de="E-Commerce-Plattform">E-commerce Platform</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-en="Ready to Collaborate?" data-de="Bereit zur Zusammenarbeit?">Ready to Collaborate?</h2>
+            <p data-en="Let's work together on your next project. Get in touch to discuss ideas!" data-de="Lassen Sie uns gemeinsam an Ihrem nächsten Projekt arbeiten. Kontaktieren Sie mich, um Ideen zu diskutieren!">
+                Let's work together on your next project. Get in touch to discuss ideas!
+            </p>
+            <a href="contact.html" class="btn btn-primary" data-en="Start a Project" data-de="Ein Projekt starten">Start a Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gorashe Suliman. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+            <div class="footer-social">
+                <a href="https://github.com/qurashi512" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/qurashi512" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:gorashe.suliman@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
