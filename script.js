@@ -8,7 +8,6 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 // Apply theme on page load
 document.addEventListener('DOMContentLoaded', () => {
     applyTheme(currentTheme);
-    initThemeToggle();
     applyLanguage(currentLanguage);
     initHamburgerMenu();
     initLangDropdown();
@@ -32,28 +31,6 @@ function applyTheme(theme) {
     
     localStorage.setItem('theme', theme);
     updateThemeLabel();
-}
-
-/**
- * Initialize theme toggle button
- */
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle-btn');
-    
-    if (!themeToggle) return;
-    
-    themeToggle.addEventListener('click', () => {
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        applyTheme(newTheme);
-    });
-    
-    // Keyboard shortcut: Alt + T for theme toggle
-    document.addEventListener('keydown', (e) => {
-        if (e.altKey && e.key === 't') {
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            applyTheme(newTheme);
-        }
-    });
 }
 
 /**
@@ -383,9 +360,14 @@ function toggleTheme() {
     
     const icon = document.querySelector('.theme-icon');
     if (icon) {
-        icon.textContent = newTheme === 'light' ? '☀️' : '🌙';
+        icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
     }
 }
+
+// Keyboard shortcut: Alt + T
+document.addEventListener('keydown', (e) => {
+    if (e.altKey && e.key === 't') toggleTheme();
+});
 
 // ========================================
 // LANGUAGE DROPDOWN - يعمل بالنقر على الموبايل والديسكتوب
