@@ -3,6 +3,7 @@
 // ========================================
 
 let currentTheme = localStorage.getItem('theme') || 'light';
+let currentLanguage = localStorage.getItem('language') || 'en';
 
 // Apply theme on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     applyLanguage(currentLanguage);
     initHamburgerMenu();
+    initLangDropdown();
    // initFormHandler();
     setActiveNav();
     showScrollToTop();
@@ -291,23 +293,44 @@ function toggleTheme() {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     applyTheme(newTheme);
     
-    // تحديث الأيقونة داخل الزر الجديد
     const icon = document.querySelector('.theme-icon');
     if (icon) {
         icon.textContent = newTheme === 'light' ? '☀️' : '🌙';
     }
 }
 
-function setLanguage(lang) {
-    // استدعاء دالة تطبيق اللغة الموجودة مسبقاً في ملفك
-    applyLanguage(lang);
-    
-    // تحديث النص في القائمة المنسدلة
-    const currentLangText = document.getElementById('current-lang');
-    if (currentLangText) {
-        const names = { 'en': 'English', 'de': 'Deutsch', 'ar': 'العربية' };
-        currentLangText.textContent = names[lang];
-    }
+// ========================================
+// LANGUAGE DROPDOWN - يعمل بالنقر على الموبايل والديسكتوب
+// ========================================
+function initLangDropdown() {
+    const langDropdown = document.querySelector('.lang-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    if (!langDropdown || !dropdownContent) return;
+
+    // تبديل ظهور القائمة عند النقر على الزر
+    langDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isVisible = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isVisible ? 'none' : 'block';
+    });
+
+    // تطبيق اللغة عند النقر على أي خيار في القائمة
+    dropdownContent.querySelectorAll('a[data-lang]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const lang = link.getAttribute('data-lang');
+            currentLanguage = lang;
+            setLanguage(lang);
+            dropdownContent.style.display = 'none';
+        });
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', () => {
+        dropdownContent.style.display = 'none';
+    });
 }
 // ========================================
 // CONSOLE MESSAGE

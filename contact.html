@@ -14,27 +14,27 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <div class="nav-controls">
-    <div class="lang-dropdown">
-        <button class="dropbtn">🌐 <span id="current-lang">English</span></button>
-        <div class="dropdown-content">
-            <a href="#" onclick="setLanguage('en'); return false;">🇬🇧 English</a>
-            <a href="#" onclick="setLanguage('de'); return false;">🇩🇪 Deutsch</a>
-            <a href="#" onclick="setLanguage('ar'); return false;">🇸🇦 العربية</a>
-        </div>
-    </div>
-    <button class="theme-toggle-btn" onclick="toggleTheme()">
-        <span class="theme-icon">☀️</span>
-    </button>
-</div>
                 <h2>Gorashe Suliman</h2>
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html" data-en="Home" data-de="Startseite">Home</a></li>
-                <li><a href="about.html" data-en="About" data-de="Über mich">About</a></li>
-                <li><a href="projects.html" data-en="Projects" data-de="Projekte">Projects</a></li>
-                <li><a href="contact.html" class="active" data-en="Contact" data-de="Kontakt">Contact</a></li>
+                <li><a href="index.html" data-en="Home" data-de="Startseite" data-ar="الرئيسية">Home</a></li>
+                <li><a href="about.html" data-en="About" data-de="Über mich" data-ar="عني">About</a></li>
+                <li><a href="projects.html" data-en="Projects" data-de="Projekte" data-ar="المشاريع">Projects</a></li>
+                <li><a href="contact.html" class="active" data-en="Contact" data-de="Kontakt" data-ar="تواصل">Contact</a></li>
             </ul>
+            <div class="nav-controls">
+                <div class="lang-dropdown">
+                    <button class="dropbtn">🌐 <span id="current-lang">English</span></button>
+                    <div class="dropdown-content">
+                        <a href="#" data-lang="en">🇬🇧 English</a>
+                        <a href="#" data-lang="de">🇩🇪 Deutsch</a>
+                        <a href="#" data-lang="ar">🇸🇦 العربية</a>
+                    </div>
+                </div>
+                <button class="theme-toggle-btn" onclick="toggleTheme()">
+                    <span class="theme-icon">☀️</span>
+                </button>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -46,8 +46,8 @@
     <!-- Contact Hero -->
     <section class="contact-hero">
         <div class="container">
-            <h1 data-en="Get in Touch" data-de="Kontakt aufnehmen">Get in Touch</h1>
-            <p class="subtitle" data-en="Let's build something great together" data-de="Lassen Sie uns gemeinsam etwas Großartiges schaffen">Let's build something great together</p>
+            <h1 data-en="Get in Touch" data-de="Kontakt aufnehmen" data-ar="تواصل معي">Get in Touch</h1>
+            <p class="subtitle" data-en="Let's build something great together" data-de="Lassen Sie uns gemeinsam etwas Großartiges schaffen" data-ar="لنبني شيئاً رائعاً معاً">Let's build something great together</p>
         </div>
     </section>
 
@@ -58,8 +58,8 @@
                 
                 <!-- Contact Information -->
                 <div class="contact-info">
-                    <h2 data-en="Contact Information" data-de="Kontaktinformationen">Contact Information</h2>
-                    <p data-en="Feel free to reach out through any of these channels:" data-de="Kontaktieren Sie mich gerne über einen dieser Kanäle:">
+                    <h2 data-en="Contact Information" data-de="Kontaktinformationen" data-ar="معلومات التواصل">Contact Information</h2>
+                    <p data-en="Feel free to reach out through any of these channels:" data-de="Kontaktieren Sie mich gerne über einen dieser Kanäle:" data-ar="لا تتردد في التواصل عبر أي من هذه القنوات:">
                         Feel free to reach out through any of these channels:
                     </p>
 
@@ -81,7 +81,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="method-info">
-                                <h3 data-en="Phone" data-de="Telefon">Phone</h3>
+                                <h3 data-en="Phone" data-de="Telefon" data-ar="الهاتف">Phone</h3>
                                 <a href="tel:+201010736525">+20 101 073 6525</a>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="method-info">
-                                <h3 data-en="Location" data-de="Standort">Location</h3>
+                                <h3 data-en="Location" data-de="Standort" data-ar="الموقع">Location</h3>
                                 <p>Cairo, Egypt</p>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
 
                     <!-- Social Media Links -->
                     <div class="social-connect">
-                        <h3 data-en="Connect With Me" data-de="Verbinden Sie sich mit mir">Connect With Me</h3>
+                        <h3 data-en="Connect With Me" data-de="Verbinden Sie sich mit mir" data-ar="تواصل معي">Connect With Me</h3>
                         <div class="social-links-detailed">
                             <!-- GitHub -->
                             <a href="https://github.com/qurashi512" target="_blank" class="social-card github">
@@ -165,7 +165,7 @@
                 </div>
 
                <div class="contact-form-container">
-    <h2 data-en="Send a Message" data-de="Nachricht senden">Send a Message</h2>
+    <h2 data-en="Send a Message" data-de="Nachricht senden" data-ar="أرسل رسالة">Send a Message</h2>
     
     <form class="contact-form" id="contactForm" action="https://formspree.io/f/xvzlobpz" method="POST">
         <div class="form-group">
@@ -213,18 +213,18 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 data-en="Looking for an Ausbildung Candidate?" data-de="Suchen Sie einen Ausbildungskandidaten?">Looking for an Ausbildung Candidate?</h2>
-            <p data-en="I'm actively seeking vocational training opportunities in IT. Download my CV to learn more about my qualifications." data-de="Ich suche aktiv nach Ausbildungsmöglichkeiten im IT-Bereich. Laden Sie meinen Lebenslauf herunter, um mehr über meine Qualifikationen zu erfahren.">
+            <h2 data-en="Looking for an Ausbildung Candidate?" data-de="Suchen Sie einen Ausbildungskandidaten?" data-ar="تبحث عن مرشح للتدريب المهني؟">Looking for an Ausbildung Candidate?</h2>
+            <p data-en="I'm actively seeking vocational training opportunities in IT. Download my CV to learn more about my qualifications." data-de="Ich suche aktiv nach Ausbildungsmöglichkeiten im IT-Bereich. Laden Sie meinen Lebenslauf herunter, um mehr über meine Qualifikationen zu erfahren." data-ar="أبحث بنشاط عن فرص تدريب مهني في مجال تقنية المعلومات. حمّل سيرتي الذاتية لمعرفة المزيد عن مؤهلاتي.">
                 I'm actively seeking vocational training opportunities in IT. Download my CV to learn more about my qualifications.
             </p>
             <div class="cv-buttons">
                 <a href="cv/Gorashe_Suliman_CV_EN.pdf" download class="btn btn-primary">
                     <i class="fas fa-download"></i>
-                    <span data-en="Download CV (English)" data-de="Lebenslauf herunterladen (Englisch)">Download CV (English)</span>
+                    <span data-en="Download CV (English)" data-de="Lebenslauf herunterladen (Englisch)" data-ar="تحميل السيرة الذاتية (إنجليزي)">Download CV (English)</span>
                 </a>
                 <a href="cv/Gorashe_Suliman_CV_DE.pdf" download class="btn btn-secondary">
                     <i class="fas fa-download"></i>
-                    <span data-en="Download CV (German)" data-de="Lebenslauf herunterladen (Deutsch)">Download CV (German)</span>
+                    <span data-en="Download CV (German)" data-de="Lebenslauf herunterladen (Deutsch)" data-ar="تحميل السيرة الذاتية (ألماني)">Download CV (German)</span>
                 </a>
             </div>
         </div>
@@ -233,7 +233,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Gorashe Suliman. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+            <p>&copy; 2026 Gorashe Suliman. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
             <div class="footer-social">
                 <a href="https://github.com/qurashi512" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/qurashi512" target="_blank"><i class="fab fa-linkedin"></i></a>

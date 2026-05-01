@@ -102,22 +102,23 @@ body {
 }
 
 /* التنسيق الجديد لأدوات التحكم داخل الناف بار */
-/* التنسيق الجديد المنظم داخل شريط التنقل */
 .nav-controls {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-left: auto;
+    margin-left: auto; /* يدفع الأزرار لليمين بجانب المنيو */
     margin-right: 20px;
 }
 
+/* لضمان الترتيب الصحيح في وضع RTL (العربية) */
 [dir="rtl"] .nav-controls {
     margin-left: 20px;
     margin-right: auto;
 }
 
+/* تنسيق زر الثيم الجديد ليصبح أنيقاً داخل الشريط */
 .theme-toggle-btn {
-    background: none;
+    background: var(--bg-light);
     border: 1px solid var(--border-color);
     width: 40px;
     height: 40px;
@@ -127,9 +128,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s;
     color: var(--text-dark);
 }
 
+[data-theme="dark"] .theme-toggle-btn {
+    background: var(--dark-bg-tertiary);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-primary);
+}
 
 /* استبدل من السطر 216 إلى 261 بهذا الكود */
 .dropdown-content {
@@ -1795,30 +1802,43 @@ body {
     }
 }
 
-.nav-menu {
-    position: fixed;
-    inset-inline-start: -100%; 
-    top: 0; /* جعلناه يبدأ من أعلى الشاشة تماماً */
-    height: 100vh; /* يغطي الشاشة بالكامل */
-    flex-direction: column;
-    justify-content: center;
-    background: var(--bg-white);
-    width: 100%;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-    z-index: 3000 !important; /* أعلى عنصر في الصفحة */
-}
+/* ========================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+======================================== */
+@media (max-width: 768px) {
 
-.hamburger {
-    display: flex;
-    z-index: 3100 !important; /* يجب أن يكون زر الضغط أعلى من المنيو نفسه */
-    position: relative;
-}
+    /* إخفاء روابط الناف بار وتحويلها لقائمة جانبية */
+    .nav-menu {
+        position: fixed;
+        inset-inline-start: -100%;
+        top: 0;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--bg-white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        z-index: 3000;
+        gap: var(--spacing-lg);
+    }
 
-/* حركة تحويل الزر لعلامة X */
-.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+    /* إظهار المنيو عند الضغط على الهامبرغر */
+    .nav-menu.active {
+        inset-inline-start: 0;
+    }
+
+    /* إظهار زر الهامبرغر فقط على الموبايل */
+    .hamburger {
+        display: flex;
+        z-index: 3100;
+        position: relative;
+    }
+
+    /* حركة تحويل الزر لعلامة X */
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
     .hero-title {
         font-size: 2.5rem;
