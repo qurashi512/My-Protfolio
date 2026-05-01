@@ -2043,3 +2043,10 @@ html {
     right: auto;
     left: 0;
 }
+
+/* منع كلمات الألمانية الطويلة من الخروج خارج الحاوية */
+.upcoming-projects li span {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
