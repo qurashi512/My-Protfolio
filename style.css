@@ -102,23 +102,22 @@ body {
 }
 
 /* التنسيق الجديد لأدوات التحكم داخل الناف بار */
+/* التنسيق الجديد المنظم داخل شريط التنقل */
 .nav-controls {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-left: auto; /* يدفع الأزرار لليمين بجانب المنيو */
+    margin-left: auto;
     margin-right: 20px;
 }
 
-/* لضمان الترتيب الصحيح في وضع RTL (العربية) */
 [dir="rtl"] .nav-controls {
     margin-left: 20px;
     margin-right: auto;
 }
 
-/* تنسيق زر الثيم الجديد ليصبح أنيقاً داخل الشريط */
 .theme-toggle-btn {
-    background: var(--bg-light);
+    background: none;
     border: 1px solid var(--border-color);
     width: 40px;
     height: 40px;
@@ -128,15 +127,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;
     color: var(--text-dark);
 }
 
-[data-theme="dark"] .theme-toggle-btn {
-    background: var(--dark-bg-tertiary);
-    border-color: var(--dark-border-color);
-    color: var(--dark-text-primary);
-}
 
 /* استبدل من السطر 216 إلى 261 بهذا الكود */
 .dropdown-content {
