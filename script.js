@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(currentLanguage);
     initHamburgerMenu();
     initLangDropdown();
-   // initFormHandler();
+    initFormHandler();
     setActiveNav();
     showScrollToTop();
 });
@@ -38,7 +38,7 @@ function applyTheme(theme) {
  * Initialize theme toggle button
  */
 function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.querySelector('.theme-toggle-btn');
     
     if (!themeToggle) return;
     
@@ -82,6 +82,12 @@ const languages = {
         about: 'Über mich',
         projects: 'Projekte',
         contact: 'Kontakt',
+    },
+    ar: {
+        home: 'الرئيسية',
+        about: 'عني',
+        projects: 'المشاريع',
+        contact: 'تواصل',
     }
 };
 
@@ -97,7 +103,23 @@ function setLanguage(lang) {
         }
     });
 
-    // 2. تفعيل الاتجاه من اليمين لليسار (RTL) عند اختيار العربية
+    // 2. تحديث الـ placeholders حسب اللغة
+    const placeholders = {
+        en: { name: 'John Doe', email: 'john@example.com', subject: 'Ausbildung Inquiry', message: 'Your message here...' },
+        de: { name: 'Max Mustermann', email: 'max@beispiel.de', subject: 'Ausbildungsanfrage', message: 'Ihre Nachricht hier...' },
+        ar: { name: 'محمد أحمد', email: 'example@mail.com', subject: 'استفسار عن تدريب', message: 'اكتب رسالتك هنا...' }
+    };
+    const ph = placeholders[lang] || placeholders.en;
+    const nameInput    = document.getElementById('name');
+    const emailInput   = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    if (nameInput)    nameInput.placeholder    = ph.name;
+    if (emailInput)   emailInput.placeholder   = ph.email;
+    if (subjectInput) subjectInput.placeholder = ph.subject;
+    if (messageInput) messageInput.placeholder = ph.message;
+
+    // 3. تفعيل الاتجاه من اليمين لليسار (RTL) عند اختيار العربية
     if (lang === 'ar') {
         document.documentElement.setAttribute('dir', 'rtl');
     } else {
@@ -106,14 +128,14 @@ function setLanguage(lang) {
     
     document.documentElement.lang = lang;
 
-    // 3. تحديث النص الظاهر في زر القائمة المنسدلة (🌐 Current Language)
+    // 4. تحديث النص الظاهر في زر القائمة المنسدلة (🌐 Current Language)
     const currentLangText = document.getElementById('current-lang');
     if (currentLangText) {
         const langMap = { 'en': 'English', 'de': 'Deutsch', 'ar': 'العربية' };
         currentLangText.textContent = langMap[lang];
     }
 
-    // 4. حفظ الاختيار في المتصفح
+    // 5. حفظ الاختيار في المتصفح
     localStorage.setItem('language', lang);
 }
 
@@ -152,9 +174,74 @@ function initHamburgerMenu() {
 // FORM HANDLER
 // ========================================
 
+function initFormHandler() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
 
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-function isValidEmail(email) {
+        const submitBtn = form.querySelector('.btn-submit');
+        const lang = currentLanguage;
+
+        // رسائل متعددة اللغات
+        const messages = {
+            en: {
+                sending: 'Sending...',
+                success: '✅ Message sent successfully! I\'ll get back to you soon.',
+                error: '❌ Failed to send. Please try again or email me directly.',
+                invalid: '⚠️ Please fill in all fields correctly.'
+            },
+            de: {
+                sending: 'Senden...',
+                success: '✅ Nachricht erfolgreich gesendet! Ich melde mich bald.',
+                error: '❌ Senden fehlgeschlagen. Bitte versuche es erneut oder schreib mir direkt.',
+                invalid: '⚠️ Bitte alle Felder korrekt ausfüllen.'
+            },
+            ar: {
+                sending: 'جارٍ الإرسال...',
+                success: '✅ تم إرسال رسالتك بنجاح! سأرد عليك قريباً.',
+                error: '❌ فشل الإرسال. حاول مجدداً أو راسلني مباشرة.',
+                invalid: '⚠️ يرجى ملء جميع الحقول بشكل صحيح.'
+            }
+        };
+
+        const m = messages[lang] || messages.en;
+
+        // التحقق من البريد الإلكتروني
+        const emailInput = form.querySelector('#email');
+        if (emailInput && !isValidEmail(emailInput.value)) {
+            showNotification(m.invalid, 'error');
+            emailInput.focus();
+            return;
+        }
+
+        // تعطيل الزر أثناء الإرسال
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>${m.sending}</span>`;
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                showNotification(m.success, 'success');
+                form.reset();
+            } else {
+                showNotification(m.error, 'error');
+            }
+        } catch (err) {
+            showNotification(m.error, 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
+    });
+}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }

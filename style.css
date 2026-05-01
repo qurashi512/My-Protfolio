@@ -2030,7 +2030,7 @@ html {
 
 [dir="rtl"] .hero-buttons, 
 [dir="rtl"] .cv-buttons {
-    flex-direction: row-reverse;
+    justify-content: center;
 }
 
 /* قلب اتجاه الأيقونات في العربي إذا لزم الأمر */
