@@ -950,8 +950,11 @@ body {
 }
 
 .soft-skill h3 {
-    font-size: 1rem;
+    font-size: 0.82rem;
     color: var(--text-dark);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 }
 
 /* ========================================
