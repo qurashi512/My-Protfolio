@@ -740,25 +740,123 @@ function TopLanguagesCard() {
   );
 }
 
+// ─── GITHUB ───────────────────────────────────────────────────────────────
 function GitHubActivity() {
+  const { t, language } = useLanguage();
+  const username = "qurashi512";
+  const [stats, setStats] = useState<{ repos: number; stars: number; followers: number; following: number } | null>(null);
+  const [langs, setLangs] = useState<{ name: string; pct: number; color: string }[]>([]);
+  const COLORS = ["#6366F1","#06B6D4","#A855F7","#F59E0B","#10B981","#EF4444","#F97316","#EC4899"];
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${username}`)
+      .then(r => r.json())
+      .then(d => setStats({ repos: d.public_repos, stars: 0, followers: d.followers, following: d.following }));
+    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+      .then(r => r.json())
+      .then((repos: { language: string | null; stargazers_count: number }[]) => {
+        if (!Array.isArray(repos)) return;
+        const starTotal = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        setStats(prev => prev ? { ...prev, stars: starTotal } : prev);
+        const counts: Record<string, number> = {};
+        repos.forEach(r => { if (r.language) counts[r.language] = (counts[r.language] || 0) + 1; });
+        const total = Object.values(counts).reduce((a, b) => a + b, 0);
+        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+        setLangs(sorted.map(([name, cnt], i) => ({ name, pct: Math.round((cnt / total) * 100), color: COLORS[i % COLORS.length] })));
+      });
+  }, []);
+
+  const statLabels = {
+    repos:     language === "ar" ? "مستودع" : language === "de" ? "Repos" : "Repos",
+    stars:     language === "ar" ? "نجمة" : "Stars",
+    followers: language === "ar" ? "متابع" : language === "de" ? "Follower" : "Followers",
+    following: language === "ar" ? "يتابع" : language === "de" ? "Folgt" : "Following",
+  };
+
   return (
     <AnimSection id="github" className="py-24 bg-[#0A0E1A]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionTitle en="GitHub Activity" de="GitHub-Aktivität" ar="نشاط GitHub" />
-        <div className="grid md:grid-cols-3 gap-6">
-          <GitHubStatCard />
-          <div className="p-4 rounded-2xl bg-[#1E293B]/60 border border-[#334155]/40 hover:border-[#6366F1]/30
-            hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300">
-            <p className="text-xs font-semibold text-[#6366F1] uppercase tracking-wider mb-3">Contribution Graph</p>
-            <img src="https://ghchart.rshah.org/6366F1/qurashi512" alt="Contribution Graph" loading="lazy" className="w-full rounded-lg" />
+
+        {/* Stats + Languages */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+
+          {/* GitHub Stats */}
+          <div className="p-6 rounded-2xl bg-[#1E293B]/60 border border-[#334155]/40
+            hover:border-[#6366F1]/30 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300">
+            <p className="text-xs font-semibold text-[#6366F1] uppercase tracking-wider mb-4">GitHub Stats</p>
+            {stats ? (
+              <div className="grid grid-cols-2 gap-4">
+                {([
+                  { label: statLabels.repos,     value: stats.repos,     icon: "📁" },
+                  { label: statLabels.stars,     value: stats.stars,     icon: "⭐" },
+                  { label: statLabels.followers, value: stats.followers, icon: "👥" },
+                  { label: statLabels.following, value: stats.following, icon: "➕" },
+                ] as { label: string; value: number; icon: string }[]).map(({ label, value, icon }) => (
+                  <div key={label} className="p-3 rounded-xl bg-[#0A0E1A]/60 border border-[#334155]/30 text-center">
+                    <div className="text-2xl mb-1">{icon}</div>
+                    <div className="text-2xl font-bold text-[#6366F1] font-['Sora']">{value}</div>
+                    <div className="text-xs text-[#94A3B8] mt-0.5">{label}</div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex justify-center py-8">
+                <div className="w-6 h-6 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+              </div>
+            )}
           </div>
-          <TopLanguagesCard />
+
+          {/* Top Languages */}
+          <div className="p-6 rounded-2xl bg-[#1E293B]/60 border border-[#334155]/40
+            hover:border-[#6366F1]/30 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300">
+            <p className="text-xs font-semibold text-[#6366F1] uppercase tracking-wider mb-4">
+              {language === "ar" ? "أكثر اللغات استخداماً" : language === "de" ? "Top-Sprachen" : "Top Languages"}
+            </p>
+            {langs.length > 0 ? (
+              <div className="flex flex-col gap-3">
+                {langs.map(({ name, pct, color }) => (
+                  <div key={name}>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-[#F1F5F9] font-medium">{name}</span>
+                      <span className="text-[#94A3B8]">{pct}%</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-[#0A0E1A]">
+                      <div className="h-2 rounded-full transition-all duration-700" style={{ width: `${pct}%`, backgroundColor: color }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex justify-center py-8">
+                <div className="w-6 h-6 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Contribution Graph — full width */}
+        <div className="p-6 rounded-2xl bg-[#1E293B]/60 border border-[#334155]/40
+          hover:border-[#6366F1]/30 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300">
+          <p className="text-xs font-semibold text-[#6366F1] uppercase tracking-wider mb-4">Contribution Graph</p>
+          <div className="overflow-x-auto">
+            <img
+              src={`https://ghchart.rshah.org/6366F1/${username}`}
+              alt="Contribution Graph"
+              loading="lazy"
+              className="rounded-lg min-w-[600px] w-full"
+              style={{ imageRendering: "crisp-edges" }}
+            />
+          </div>
+          <p className="text-xs text-[#475569] mt-2 text-center">
+            {language === "ar" ? "اسحب للتمرير →" : language === "de" ? "Zum Scrollen ziehen →" : "Swipe to scroll →"}
+          </p>
+        </div>
+
       </div>
     </AnimSection>
   );
 }
-
 // ─── LANGUAGES ────────────────────────────────────────────────────────────
 function LanguageSkills() {
   const { language } = useLanguage();
