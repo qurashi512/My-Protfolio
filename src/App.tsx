@@ -17,34 +17,38 @@ const queryClient = new QueryClient();
 
 // ← مكوّن جديد يرجع للأعلى عند كل تنقل
 function ScrollReset() {
-  const [location] = useLocation();
-  const prevRef = useRef<string>("");
+  const [location] = useLocation();
+  const prevRef = useRef<string>("");
 
-  useEffect(() => {
-    const prev = prevRef.current;
-    prevRef.current = location;
+  useEffect(() => {
+    const prev = prevRef.current;
+    prevRef.current = location;
 
-    if (location === "/") {
-      // رجوع للصفحة الرئيسية → استعد الموضع المحفوظ
-      const saved = sessionStorage.getItem("home-scroll");
-      if (saved && prev !== "") {
-        setTimeout(() => {
-          window.scrollTo({ top: parseInt(saved), behavior: "instant" });
-        }, 80);
-        return;
-      }
-    }
+    if (location === "/") {
+      const target = sessionStorage.getItem("scrollTarget");
+      if (target) {
+        sessionStorage.removeItem("scrollTarget");
+        const attempt = (tries: number) => {
+          const el = document.getElementById(target);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          } else if (tries > 0) {
+            setTimeout(() => attempt(tries - 1), 100);
+          }
+        };
+        setTimeout(() => attempt(10), 150);
+        return;
+      }
+      if (prev === "") {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
+      return;
+    }
 
-    if (prev === "/") {
-      // مغادرة الصفحة الرئيسية → احفظ الموضع الحالي
-      sessionStorage.setItem("home-scroll", String(window.scrollY));
-    }
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location]);
 
-    // باقي الصفحات → ابدأ من الأعلى
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [location]);
-
-  return null;
+  return null;
 }
 
 function Router() {
