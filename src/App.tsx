@@ -1,5 +1,5 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { useEffect } from "react";                              // ← أضف هذا
+import { useState, useEffect, useRef } from "react";                              // ← أضف هذا
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,9 +18,32 @@ const queryClient = new QueryClient();
 // ← مكوّن جديد يرجع للأعلى عند كل تنقل
 function ScrollReset() {
   const [location] = useLocation();
+  const prevRef = useRef<string>("");
+
   useEffect(() => {
+    const prev = prevRef.current;
+    prevRef.current = location;
+
+    if (location === "/") {
+      // رجوع للصفحة الرئيسية → استعد الموضع المحفوظ
+      const saved = sessionStorage.getItem("home-scroll");
+      if (saved && prev !== "") {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(saved), behavior: "instant" });
+        }, 80);
+        return;
+      }
+    }
+
+    if (prev === "/") {
+      // مغادرة الصفحة الرئيسية → احفظ الموضع الحالي
+      sessionStorage.setItem("home-scroll", String(window.scrollY));
+    }
+
+    // باقي الصفحات → ابدأ من الأعلى
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
+
   return null;
 }
 
