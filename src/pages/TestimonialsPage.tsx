@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Quote } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useLocation } from "wouter";
+
 
 const SB_URL = "https://nijmaixshspqogidtdai.supabase.co/rest/v1";
 const SB_KEY = "sb_publishable_9U-mT8VLJQ0E5XoMIfIrTA_JmiERNXn";
@@ -16,6 +18,7 @@ interface Testimonial {
 }
 
 export default function TestimonialsPage() {
+  const [, navigate] = useLocation();
   const { language } = useLanguage();
   const [items, setItems] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
@@ -73,11 +76,12 @@ export default function TestimonialsPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Back */}
-        <Link href="/">
-          <span className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-[#F1F5F9] text-sm font-medium mb-8 cursor-pointer transition-colors">
-            <ArrowLeft className="w-4 h-4" /> {t.back}
-          </span>
-        </Link>
+        <button
+          onClick={() => { sessionStorage.setItem("scrollTarget", "testimonials"); navigate("/"); }}
+          className="inline-flex items-center gap-2 text-[#94A3B8] hover:text-[#F1F5F9] text-sm font-medium mb-8 transition-colors"
+        >
+        <ArrowLeft className="w-4 h-4" /> {t.back}
+        </button>
 
         {/* Header */}
         <div className="text-center mb-14">
